@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap");
+
+html {
+  background-color: rgb(44, 44, 44);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-size: 48px;
+  color: wheat;
+  font-family: "Chelsea Market", cursive;
+  text-align: center;
+}
+
+h3 {
+  display: flex;
+  justify-content: left;
+  padding: 0px 0px;
+  margin: 0px 0px;
+  color: wheat;
+  font-family: "Chelsea Market", cursive;
+  width: 480px;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  border: 1px solid rgb(110, 74, 6);
+}
+
+#filler {
+  width: 240px;
+}
+
+button {
+  font-size: 24px;
+  width: 120px;
+  height: 54px;
+  padding: 0px 0px;
+  border: 1px solid rgb(110, 74, 6);
+  font-family: "Chelsea Market", cursive;
+}
+
+button:hover {
+  background-image: url("./buttonHoverBackground.png");
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+input {
+  display: flex;
+  justify-content: right;
+  width: 470px;
+  height: 60px;
+  text-align: right;
+  font-size: 24px;
+  font-family: "Chelsea Market", cursive;
+}
+
+.row1 {
+  display: flex;
+  justify-content: right;
+  width: 480px;
+}
+
+.row2,
+.row3,
+.row4,
+.row5,
+.row6 {
+  display: flex;
+  width: 480px;
+}

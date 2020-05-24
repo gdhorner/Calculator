@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Gavin's Calculator</title>
+  </head>
+
+  <body>
+    <h1>Gavin's Calculator</h1>
+    <h3>Begin Calculating Now :)</h3>
+    <div class="calculator">
+      <div class="field">
+        <input type="text" id="textfield" value="test" />
+      </div>
+      <div class="row1">
+        <button id="filler"></button>
+        <button onclick="clearField()" id="C">C</button>
+        <button onclick="backspaceField()" id="<-"><-</button>
+      </div>
+      <div class="row2">
+        <button type="button" id="1/x">1/x</button>
+        <button type="button" id="x^2">x^2</button>
+        <button type="button" id="2sqrtx">2sqrtx</button>
+        <button onclick="addToField(this.id)" id="/">/</button>
+      </div>
+      <div class="row3">
+        <button onclick="addToField(this.id)" id="7">7</button>
+        <button onclick="addToField(this.id)" id="8">8</button>
+        <button onclick="addToField(this.id)" id="9">9</button>
+        <button onclick="addToField(this.id)" id="x">x</button>
+      </div>
+      <div class="row4">
+        <button onclick="addToField(this.id)" id="4">4</button>
+        <button onclick="addToField(this.id)" id="5">5</button>
+        <button onclick="addToField(this.id)" id="6">6</button>
+        <button onclick="addToField(this.id)" id="-">-</button>
+      </div>
+      <div class="row5">
+        <button onclick="addToField(this.id)" id="1">1</button>
+        <button onclick="addToField(this.id)" id="2">2</button>
+        <button onclick="addToField(this.id)" id="3">3</button>
+        <button onclick="addToField(this.id)" id="+">+</button>
+      </div>
+      <div class="row6">
+        <button onclick="swapSign()" id="+/-">+/-</button>
+        <button onclick="addToField(this.id)" id="0">0</button>
+        <button onclick="addToField(this.id)" id=".">.</button>
+        <button onclick="operateAll()" id="=">=</button>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
