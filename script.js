@@ -18,21 +18,15 @@ function backspaceField() {
   if (field.length === 0) {
     return;
   }
-
-  let newDisplay = textfield.value.split("");
-  newDisplay.pop();
-  if (newDisplay[newDisplay.length - 1] == " ") {
-    newDisplay.pop();
-  }
-  textfield.value = newDisplay.join("");
-
   let lastElem = field.pop();
   if (lastElem.length === 1) {
+    textfield.value = field.join(" ");
     return;
   }
   let newLastElem = lastElem.toString().split("");
   newLastElem.pop();
   field.push(newLastElem.join(""));
+  textfield.value = field.join(" ");
 }
 
 function swapSign() {
@@ -40,7 +34,7 @@ function swapSign() {
     return;
   }
   let lastElem = field.pop();
-  if (isOperator(lastElem)) {
+  if (isOperator(lastElem) || lastElem == 0) {
     field.push(lastElem);
     return;
   } else if (lastElem.toString().includes("-")) {
@@ -50,10 +44,7 @@ function swapSign() {
   } else {
     lastElem = "-" + lastElem.toString();
     field.push(lastElem);
-    let newDisplay = textfield.value.split(" ");
-    newDisplay.pop();
-    newDisplay.push(lastElem);
-    textfield.value = newDisplay.join(" ");
+    textfield.value = field.join(" ");
   }
 }
 
@@ -70,23 +61,51 @@ function isOperator(id) {
   }
 }
 
+function endsInPeriod(e) {
+  if (e === undefined) {
+    return false;
+  }
+  let tempArr = e.toString().split("");
+  if (tempArr[tempArr.length - 1] == ".") {
+    return true;
+  }
+  return false;
+}
+
 function addToField(id) {
   let lastElem = field[field.length - 1];
   if (lastElem === undefined && !isOperator(id)) {
     field.push(id);
     textfield.value = id;
-  } else if (!isOperator(lastElem) && !isOperator(id)) {
+  } else if (id == "." && lastElem.includes(".")) {
+    return;
+  } else if (
+    lastElem.toString().length > 1 &&
+    endsInPeriod(lastElem) &&
+    isOperator(id)
+  ) {
+    backspaceField();
+    field.push(id);
+    textfield.value = field.join(" ");
+  } else if (
+    (!isOperator(lastElem) && !isOperator(id)) ||
+    (lastElem.toString().includes(".0") && !isOperator(id))
+  ) {
     field.pop();
     field.push(lastElem + id);
-    textfield.value = textfield.value + id;
+    textfield.value = field.join(" ");
+  } else if (lastElem == 0 && !isOperator(id)) {
+    field.pop();
+    field.push(id);
+    textfield.value = field.join(" ");
   } else if (field.length === 0 && isOperator(id)) {
     return;
   } else if (
-    (!isOperator(lastElem) && isOperator(id)) ||
+    (!isOperator(lastElem) && isOperator(id) && lastElem.toString() !== ".") ||
     (isOperator(lastElem) && !isOperator(id))
   ) {
     field.push(id);
-    textfield.value = textfield.value + " " + id;
+    textfield.value = field.join(" ");
   } else {
     return;
   }
@@ -104,13 +123,13 @@ function operateAll() {
 function operate() {
   let tempField = field.slice();
   let lastElem = field[field.length - 1];
-  if (isOperator(lastElem)) {
+  if (isOperator(lastElem) || endsInPeriod(lastElem)) {
     field = tempField;
     return -1;
   }
-  const num1 = parseInt(field.shift());
+  const num1 = parseFloat(field.shift());
   const operator = field.shift();
-  const num2 = parseInt(field.shift());
+  const num2 = parseFloat(field.shift());
   let result;
   switch (operator) {
     case "+":
@@ -142,4 +161,40 @@ function operate() {
       field = tempField;
       break;
   }
+}
+
+function oneDivideByX() {
+  let lastElem = field[field.length - 1];
+  if (isOperator(lastElem) || field.length == 0) {
+    return;
+  } else if (lastElem == 0) {
+    textfield.value = "Can't divide by 0";
+    return;
+  }
+  field.pop();
+  lastElem = 1 / lastElem;
+  field.push(lastElem);
+  textfield.value = field.join(" ");
+}
+
+function xSquared() {
+  let lastElem = field[field.length - 1];
+  if (isOperator(lastElem) || field.length === 0) {
+    return;
+  }
+  field.pop();
+  lastElem = Math.pow(lastElem, 2);
+  field.push(lastElem);
+  textfield.value = field.join(" ");
+}
+
+function squareRootOfX() {
+  let lastElem = field[field.length - 1];
+  if (isOperator(lastElem) || field.length === 0) {
+    return;
+  }
+  field.pop();
+  lastElem = Math.sqrt(lastElem);
+  field.push(lastElem);
+  textfield.value = field.join(" ");
 }

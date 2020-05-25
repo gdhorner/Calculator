@@ -9,7 +9,8 @@
 
   <body>
     <h1>Gavin's Calculator</h1>
-    <h3>Begin Calculating Now :)</h3>
+    <h1 class="notes">Currently, no keyboard support :(</h1>
+    <h3 class="direction">Begin Calculating Now :)</h3>
     <div class="calculator">
       <div class="field">
         <input type="text" id="textfield" value="test" />
@@ -20,9 +21,9 @@
         <button onclick="backspaceField()" id="<-"><-</button>
       </div>
       <div class="row2">
-        <button type="button" id="1/x">1/x</button>
-        <button type="button" id="x^2">x^2</button>
-        <button type="button" id="2sqrtx">2sqrtx</button>
+        <button onclick="oneDivideByX()" id="1/x">1/x</button>
+        <button onclick="xSquared()" id="x^2">x^2</button>
+        <button onclick="squareRootOfX()" id="sqrtx">sqrtx</button>
         <button onclick="addToField(this.id)" id="/">/</button>
       </div>
       <div class="row3">
