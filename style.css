@@ -23,7 +23,7 @@ h1 {
   padding-bottom: 30px;
 }
 
-h3 {
+h3{
   display: flex;
   justify-content: left;
   padding: 0px 0px;
@@ -31,6 +31,14 @@ h3 {
   color: wheat;
   font-family: "Chelsea Market", cursive;
   width: 480px;
+}
+
+a{
+  text-align: center;
+  padding: 0px 0px;
+  margin: 0px 0px;
+  color: wheat;
+  font-family: "Chelsea Market", cursive;
 }
 
 .calculator {
@@ -65,7 +73,7 @@ button:active {
 input {
   display: flex;
   justify-content: right;
-  width: 470px;
+  width: 474px;
   height: 60px;
   text-align: right;
   font-size: 24px;
